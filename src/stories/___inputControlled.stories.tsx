@@ -1,4 +1,4 @@
-import React, {ChangeEvent, MouseEventHandler, useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 
 export default {
     title: 'HTML/Input/Controlled',

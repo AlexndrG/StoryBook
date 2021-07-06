@@ -63,10 +63,13 @@ NEWAccordionUncollapsed.args = {
 }
 
 
+const AccordionMemo = React.memo(Accordion)
+
+
 export const NEWAccordionChangeable: Story<AccordionPropsType> = (args) => {
     const [collapse, setCollapse] = useState<boolean>(true)
 
-    return <Accordion {...args} value={collapse} onChange={() => setCollapse(!collapse)}/>
+    return <AccordionMemo {...args} value={collapse} onChange={() => setCollapse(!collapse)}/>
 }
 NEWAccordionChangeable.args = {
     titleValue: 'Test',
@@ -109,7 +112,7 @@ export const AccordionUncollapsed = () => <Accordion
 export const AccordionChangeable = () => {
     const [collapse, setCollapse] = useState<boolean>(true)
 
-    return <Accordion
+    return <AccordionMemo
         titleValue={'Test'}
         value={collapse}
         onChange={() => setCollapse(!collapse)}

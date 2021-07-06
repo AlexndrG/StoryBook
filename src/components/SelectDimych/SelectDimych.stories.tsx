@@ -22,6 +22,7 @@ SelectDimychWithoutAll.args = {
     onChange: () => callback(),
 }
 
+const SelectDimychMemo = React.memo(SelectDimych)
 
 export const SelectDimychValue3: Story<SelectType> = (args) => {
     const [value, setValue] = useState(args.items[2].value)
@@ -38,7 +39,7 @@ export const SelectDimychValue3: Story<SelectType> = (args) => {
 
             <hr/>
 
-            <SelectDimych {...args} value={value} onChange={setValue}/>
+            <SelectDimychMemo {...args} value={value} onChange={setValue}/>
         </div>
     )
 }
@@ -68,7 +69,7 @@ export const SelectDimychWithoutValue: Story<SelectType> = (args) => {
 
             <hr/>
 
-            <SelectDimych {...args} value={value} onChange={setValue}/>
+            <SelectDimychMemo {...args} value={value} onChange={setValue}/>
         </div>
     )
 }

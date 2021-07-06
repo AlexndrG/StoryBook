@@ -8,6 +8,8 @@ export default {
     component: Select,
 }
 
+const SelectMemo = React.memo(Select)
+
 export const SelectSB6: Story<SelectPropsType> = (args) => {
     const [collapse, setCollapse] = useState<boolean>(true)
 
@@ -25,7 +27,7 @@ export const SelectSB6: Story<SelectPropsType> = (args) => {
         setTitle(value)
     }
 
-    return <Select
+    return <SelectMemo
         items={selectItems}
         titleValue={title}
         value={collapse}
@@ -55,7 +57,7 @@ export const SelectSB5 = () => {
         setTitle(value)
     }
 
-    return <Select
+    return <SelectMemo
         items={selectItems}
         titleValue={title}
         value={collapse}

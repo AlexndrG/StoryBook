@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {RatingValueType, UncontrolledRating} from './UncontrolledRating';
 import { action } from '@storybook/addon-actions';
 
@@ -18,12 +18,14 @@ export const RatingChangeable3 = () => <UncontrolledRating defaultValue={3} onCh
 export const RatingChangeable4 = () => <UncontrolledRating defaultValue={4} onChange={callback}/>
 export const RatingChangeable5 = () => <UncontrolledRating defaultValue={5} onChange={callback}/>
 
+const UncontrolledRatingMemo = React.memo(UncontrolledRating)
+
 export const RatingChangeableInfo = () => {
     const [value, setValue] = useState<RatingValueType>(3)
 
     return (
         <div>
-            <UncontrolledRating defaultValue={3} onChange={setValue}/>
+            <UncontrolledRatingMemo defaultValue={3} onChange={setValue}/>
             <p/>
             Current state is: <b>{value}</b>
         </div>
@@ -35,7 +37,7 @@ export const UncontrolledRatingLikeControlled = () => {
 
     return (
         <div>
-            <UncontrolledRating defaultValue={value} onChange={setValue}/>
+            <UncontrolledRatingMemo defaultValue={value} onChange={setValue}/>
             <p/>
             Current state is: <b>{value}</b>
         </div>

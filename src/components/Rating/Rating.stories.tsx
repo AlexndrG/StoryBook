@@ -16,8 +16,10 @@ export const Rating3 = () => <Rating value={3} onClick={callback}/>
 export const Rating4 = () => <Rating value={4} onClick={callback}/>
 export const Rating5 = () => <Rating value={5} onClick={callback}/>
 
+const RatingMemo = React.memo(Rating)
+
 export const RatingChangeable = () => {
     const [value, setValue] = useState<RatingValueType>(3)
 
-    return <Rating value={value} onClick={setValue}/>
+    return <RatingMemo value={value} onClick={setValue}/>
 }

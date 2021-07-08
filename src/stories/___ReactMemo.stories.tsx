@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 export default {
-    title: 'HOC/React.memo demo',
+    title: 'MEMO/HOC React.memo demo',
 //  component: Button,
 }
 

@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 
 export default {
     title: 'MEMO/hook useMemo demo',
@@ -66,13 +66,13 @@ export const HelpsForReactMemoExample = () => {
     const [counter, setCounter] = useState(0)
     const [users, setUsers] = useState(['Dimych', 'Valera', 'Artem', 'Katya'])
 
-    const newArray = useMemo(()=> {
+    const newArray = useMemo(() => {
         console.log('useMemo')
         const tempNewArray = users.filter(u => u.toLowerCase().indexOf('a') > -1)
         return tempNewArray
     }, [users])
 
-    const addUser =() => {
+    const addUser = () => {
         const newUsers = [
             ...users,
             'Sveta ' + new Date().getTime()
@@ -89,3 +89,80 @@ export const HelpsForReactMemoExample = () => {
         </>
     )
 }
+
+
+//=============================================================================
+
+
+export const LikeUseCallback = () => {
+    console.log('LikeUseCallback')
+    const [counter, setCounter] = useState(0)
+    const [books, setBooks] = useState(['React', 'JS', 'CSS', 'HTML'])
+
+
+    // useMemo
+    //
+    // const addBook = () => {
+    //     const newBooks = [
+    //         ...books,
+    //         'Angular ' + new Date().getTime()
+    //     ]
+    //     setBooks(newBooks)
+    // }
+    // const memorizeAddBook = useMemo(()=> {
+    //     return addBook
+    // }, [books])
+
+    const memorizeAddBook = useMemo(() => {
+        return () => {
+            const newBooks = [
+                ...books,
+                'Angular ' + new Date().getTime()
+            ]
+            setBooks(newBooks)
+        }
+    }, [books])
+
+
+    // useCallback
+    //
+    // const addBook2 = () => {
+    //     const newBooks = [
+    //         ...books,
+    //         'Angular ' + new Date().getTime()
+    //     ]
+    //     setBooks(newBooks)
+    // }
+    // const memorizeAddBook2 = useCallback(addBook2, [books])
+
+    const memorizeAddBook2 = useCallback(() => {
+        const newBooks = [
+            ...books,
+            'Angular ' + new Date().getTime()
+        ]
+        setBooks(newBooks)
+    }, [books])
+
+    return (
+        <>
+            <button onClick={() => setCounter(counter + 1)}>+</button>
+            {counter}
+            <Books addBook={memorizeAddBook2}/>
+        </>
+    )
+}
+
+
+type BooksSecretPropsType = {
+    addBook: () => void
+}
+
+const BooksSecret = (props: BooksSecretPropsType) => {
+    console.log('BOOKS SECRET')
+    return (
+        <div>
+            <button onClick={props.addBook}>Add book</button>
+        </div>
+    )
+}
+const Books = React.memo(BooksSecret)

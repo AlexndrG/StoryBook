@@ -4,7 +4,7 @@ import {Select, SelectPropsType} from './Select';
 
 
 export default {
-    title: '[controlled]/Clock',
+    title: '[controlled]/Select',
     component: Select,
 }
 

@@ -80,7 +80,7 @@ export const Clock2: React.FC<PropsType> = (props) => {
 
 
             {/*
- СЂРёСЃРѕРІР°РЅРёРµ
+ рисование
  SVG
     https://qastack.ru/programming/23402542/embedding-svg-into-reactjs
     https://developer.mozilla.org/ru/docs/Web/SVG/Element/circle

@@ -34,15 +34,15 @@ export const useMemoHomeWork = () => {
     ])
 
     // const selectItemsFunc1 = () => {
-    //     console.log('Select 1')
+    //     console.log('Clock 1')
     //     return selectItems.filter(s => s.title.toLowerCase().indexOf('m') > -1)
     // }
     // const selectItemsFunc2 = () => {
-    //     console.log('Select 2')
+    //     console.log('Clock 2')
     //     return selectItems.filter(s => s.countryId === 2)
     // }
     // const selectItemsFunc3 = () => {
-    //     console.log('Select 3')
+    //     console.log('Clock 3')
     //     return selectItems.filter(s => s.population < 1000)
     // }
     //
@@ -51,17 +51,17 @@ export const useMemoHomeWork = () => {
     // const selectItems3 = selectItemsFunc3()
 
     const selectItems1 = useMemo(() => {
-        console.log('Select 1')
+        console.log('Clock 1')
         return selectItems.filter(s =>
             s.title.toLowerCase().indexOf('m') > -1 ||
             s.title.toLowerCase().indexOf('3') > -1)
     }, [selectItems])
     const selectItems2 = useMemo(() => {
-        console.log('Select 2')
+        console.log('Clock 2')
         return selectItems.filter(s => s.countryId === 2)
     }, [selectItems])
     const selectItems3 = useMemo(() => {
-        console.log('Select 3')
+        console.log('Clock 3')
         return selectItems.filter(s => s.population < 1000)
     }, [selectItems])
 

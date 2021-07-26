@@ -72,15 +72,16 @@ export const Clock2: React.FC<PropsType> = (props) => {
     return (
         <div>
             {props.type === 'digital' &&
-            <div style={{border: '1px solid red'}}>
+            <div style={{display: 'inline-block', padding: '10px', border: '1px solid red'}}>
                 <span>{get2digitsString(date.getHours())}</span>
                 : <span>{get2digitsString(date.getMinutes())}</span>
                 : <span>{get2digitsString(date.getSeconds())}</span>
             </div>}
 
 
-            {/*
- рисование
+{/*
+ Р РёСЃРѕРІР°РЅРёРµ
+
  SVG
     https://qastack.ru/programming/23402542/embedding-svg-into-reactjs
     https://developer.mozilla.org/ru/docs/Web/SVG/Element/circle
@@ -103,18 +104,11 @@ export const Clock2: React.FC<PropsType> = (props) => {
                 <svg viewBox="0 0 200 200">
                     <circle cx="100" cy="100" r="100" fill="white" stroke="grey"/>
 
-                    {/*{points().map(z => {*/}
-                    {/*        console.log(z.props)*/}
-                    {/*        return <line x1={+z.props.x1} y1={+z.props.y1} x2={+z.props.x2} y2={+z.props.y2} stroke='grey'*/}
-                    {/*                     stroke-width='1px'/>*/}
-                    {/*    }*/}
-                    {/*)}*/}
-
                     {pnts}
 
-                    <line x1="100" y1="100" x2={xs} y2={ys} stroke="green" strokeWidth="1px"/>
+                    <line x1="100" y1="100" x2={xh} y2={yh} stroke="red" strokeWidth="5px"/>
                     <line x1="100" y1="100" x2={xm} y2={ym} stroke="blue" strokeWidth="2px"/>
-                    <line x1="100" y1="100" x2={xh} y2={yh} stroke="red" strokeWidth="4px"/>
+                    <line x1="100" y1="100" x2={xs} y2={ys} stroke="green" strokeWidth="1px"/>
                 </svg>
             </div>}
 

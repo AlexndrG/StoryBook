@@ -7,22 +7,28 @@ type PropsType = {
     type: ClockType
 }
 
+const X0 = 100
+const Y0 = 100
+const S_RADIUS = 100
+const M_RADIUS = 90
+const H_RADIUS = 80
+
+
 const get2digitsString = (num: number) => num < 10 ? '0' + num : num
+
 
 const points = () => {
     const n = 60
     const r = 100
-    const x0 = 100
-    const y0 = 100
 
-    const result = Array.from(Array(n).keys()).map((z, i) => {
+    const result = Array.from(Array(n).keys()).map(i => {
             let ang = 2 * Math.PI / n * i
-            let x1 = x0 + r * Math.cos(ang)
-            let y1 = y0 + r * Math.sin(ang)
-            let x2 = x0 + (r - 5) * Math.cos(ang)
-            let y2 = y0 + (r - 5) * Math.sin(ang)
+            let x1 = X0 + r * Math.cos(ang)
+            let y1 = Y0 + r * Math.sin(ang)
+            let x2 = X0 + (r - 5) * Math.cos(ang)
+            let y2 = Y0 + (r - 5) * Math.sin(ang)
 
-            let w=1
+            let w = 1
             if (i % 5 === 0) w = 3
 
             return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke='grey' strokeWidth={w}/>
@@ -51,23 +57,17 @@ export const Clock2: React.FC<PropsType> = (props) => {
 
     const pnts = points()
 
-    const x0 = 100
-    const y0 = 100
-
-    const sRadius = 100
     const sAngle = date.getSeconds() * (2 * Math.PI / 60) - Math.PI / 2
-    const xs = x0 + sRadius * Math.cos(sAngle)
-    const ys = y0 + sRadius * Math.sin(sAngle)
+    const xs = X0 + S_RADIUS * Math.cos(sAngle)
+    const ys = Y0 + S_RADIUS * Math.sin(sAngle)
 
-    const mRadius = 90
-    const mAngle = date.getMinutes() * (2 * Math.PI / 60) - Math.PI / 2
-    const xm = x0 + mRadius * Math.cos(mAngle)
-    const ym = y0 + mRadius * Math.sin(mAngle)
+    const mAngle = (date.getMinutes() + date.getSeconds() / 60) * (2 * Math.PI / 60) - Math.PI / 2
+    const xm = X0 + M_RADIUS * Math.cos(mAngle)
+    const ym = Y0 + M_RADIUS * Math.sin(mAngle)
 
-    const hRadius = 80
-    const hAngle = date.getHours() * (2 * Math.PI / 12) - Math.PI / 2
-    const xh = x0 + hRadius * Math.cos(hAngle)
-    const yh = y0 + hRadius * Math.sin(hAngle)
+    const hAngle = (date.getHours() + date.getMinutes() / 60) * (2 * Math.PI / 12) - Math.PI / 2
+    const xh = X0 + H_RADIUS * Math.cos(hAngle)
+    const yh = Y0 + H_RADIUS * Math.sin(hAngle)
 
     return (
         <div>
@@ -79,7 +79,7 @@ export const Clock2: React.FC<PropsType> = (props) => {
             </div>}
 
 
-{/*
+            {/*
  Рисование
 
  SVG
